@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="Author_QLBV.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    
+    <header class="navbar">
+        <div class="logo">
+          <a href="">
+            <img src="LogoWeb.png" alt="Ảnh tên web">
+          </a>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Trang chủ</a></li>
+                
+                <li class="dropdown">
+                  <a href="#">Giải đấu <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Premier League</a></li>
+                    <li><a href="#">La Liga</a></li>
+                    <li><a href="#">Serie A</a></li>
+                    <li><a href="#">Bundesliga</a></li>
+                    <li><a href="#">Ligue 1</a></li>
+                    <li><a href="#">V.League 1</a></li>
+                  </ul>
+                </li>
+
+                <li><a href="#">Bóng đá Việt Nam</a></li>
+                <li><a href="#">Bóng đá thế giới</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <a href="#" >
+                <img src="SearchIcon.png" alt="Search Icon">
+            </a>
+            <a href="#" >
+                <img src="UserIcon.png" alt="User Icon">
+            </a>
+        </div>
+    </header>
+    
+    
+    <div class="container">
+
+        
+        <div class="sidebar">
+            <ul>
+                <li class="active" ><a href="Author_QLBV.html">Quản lý bài viết</a></li>
+                <li><a href="Author_QLBBDL.html">Bài báo đã lưu</a></li>
+                <li><a href="Author_QLBD.html">Bài đọc gần đây</a></li>
+                <li><a href="Author_TTCN.html">Thông tin cá nhân</a></li>
+                <li><a href="#">Đăng xuất</a></li>
+            </ul>
+        </div>
+        <main class="content">
+            <div class="admin-info">
+                <div class="admin-text">
+                    <h3>sss</h3>
+                    <p>ADMIN ID: AD190804</p>
+                </div>
+                <div class="admin-avatar">
+                    <img src="keo_ngon-removebg-preview.png" alt="Admin Avatar">
+                </div>
+            </div>
+
+            <td class="category-dropdown">
+                <button id="theloai-btn" class="category-btn">Thể loại <i class="fas fa-chevron-down dropdown-icon"></i>
+                    <div id="theloai-menu" class="category-menu"></div>
+                </button>          
+            </td>
+
+            <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+            <button class="add-post-btn" onclick="openModal2()">THÊM BÀI VIẾT</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiêu đề</th>
+                        <th>Ảnh</th>
+                        <th class="category-column">Thể loại</th>
+                        <th>Ngày đăng</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                   
+                    
+                </tbody>
+            </table>
+            
+
+            <!-- Pagination -->
+            
+        </main>
+    </div>
+   
+    
+    <div class="pagination">
+        <button id="prev-btn" class="pagination-btn">← Previous</button>
+        <div id="page-numbers"></div>
+        <button id="next-btn" class="pagination-btn">Next →</button>
+    </div>
+    
+    
+        
+    <script src="Author_QLBV.js"></script>
+    
+</body>
+</html>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Chỉnh sửa bài viết</h2>
+        
+        <label>Tiêu đề bài viết:</label>
+        <input type="text" placeholder="Nhập tiêu đề bài viết">
+        
+        <label>Tác giả:</label>
+        <input type="text" placeholder="Nhập tên tác giả">
+        
+        <label>Chọn danh mục:</label>
+        <select>
+            <option>Sự kiện</option>
+            <option>Tin tức</option>
+        </select>
+        
+        <label>Nội dung bài viết:</label>
+        <textarea placeholder="Nhập nội dung bài viết"></textarea>
+        
+        <label>Ảnh minh họa:</label>
+        <input type="file">
+        
+        <!-- Button Group -->
+        <div class="modal-buttons">
+            <button class="submit-btn">Lưu thay đổi</button>
+            <button class="cancel-btn" onclick="closeModal()">Hủy</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add Post Modal -->
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal2('addModal')">&times;</span>
+        <h2>Thêm Bài Viết Mới</h2>
+        
+        <label for="add-title">Tiêu đề bài viết:</label>
+        <input type="text" id="add-title" placeholder="Nhập tiêu đề bài viết">
+        
+        <label for="add-author">Tác giả:</label>
+        <input type="text" id="add-author" placeholder="Nhập tên tác giả">
+        
+        <label for="add-category">Chọn danh mục:</label>
+        <select id="add-category">
+            <option>Sự kiện</option>
+            <option>Tin tức</option>
+        </select>
+        
+        <label for="add-content">Nội dung bài viết:</label>
+        <textarea id="add-content" placeholder="Nhập nội dung bài viết"></textarea>
+        
+        <label for="add-image">Ảnh minh họa:</label>
+        <input type="file" id="add-image">
+        
+        <!-- Button Group -->
+        <div class="modal-buttons">
+            <button class="submit-btn" onclick="saveNewPost2()">Đăng bài</button>
+            <button class="cancel-btn" onclick="closeModal2('addModal')">Hủy</button>
+        </div>
+    </div>
+</div>
